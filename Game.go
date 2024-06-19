@@ -13,6 +13,7 @@ var UserChoice string
 func UserInput() {
 
 	var userOption string
+	var rounds int
 	fmt.Println("Welcome to Rock Paper Scissors")
 
 	for {
@@ -24,7 +25,13 @@ func UserInput() {
 		if userOption == "1" {
 			Clear()
 			fmt.Println("Game Started...")
-			GameInProgress()
+			fmt.Println("How many rounds? ")
+			fmt.Scan(&rounds)
+			currentRound := 1
+			for currentRound = 1; currentRound <= rounds; currentRound++ {
+				fmt.Printf("Round %v:\n", currentRound)
+				GameInProgress()
+			}
 		} else if userOption == "0" {
 			break
 		} else {
@@ -39,7 +46,7 @@ func UserInput() {
 func GameInProgress() {
 	ComputerChoice = ComputerTurn()
 	UserChoice = UserTurn()
-
+	fmt.Println()
 	fmt.Printf("You chose: %v\n", UserChoice)
 	fmt.Printf("Computer chose: %v\n", ComputerChoice)
 	fmt.Println()
